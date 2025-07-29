@@ -8,8 +8,8 @@ export default function Home() {
   const [searchValue, setSearchValue] = useState("");
   const [highlightedCell, setHighlightedCell] = useState<string | null>(null);
 
-  // Generate column headers (multipliers 1-10, plus some larger values)
-  const columnHeaders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30, 35, 40, 45, 50];
+  // Generate column headers (multipliers 1-10 for basic table)
+  const columnHeaders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   
   // Generate row headers (multiplicands 1-50)
   const rowHeaders = Array.from({ length: 50 }, (_, i) => i + 1);
@@ -103,13 +103,13 @@ export default function Home() {
                   {/* Header Row */}
                   <thead>
                     <tr>
-                      <th className="w-12 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600 sticky left-0 z-20">
+                      <th className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600 sticky left-0 z-20">
                         ×
                       </th>
                       {columnHeaders.map((col) => (
                         <th
                           key={col}
-                          className="w-12 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600"
+                          className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600"
                         >
                           {col}
                         </th>
@@ -122,7 +122,7 @@ export default function Home() {
                     {rowHeaders.map((row) => (
                       <tr key={row} id={`row-${row}`}>
                         {/* Row Header */}
-                        <th className="w-12 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600 sticky left-0 z-10">
+                        <th className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600 sticky left-0 z-10">
                           {row}
                         </th>
                         
@@ -135,7 +135,7 @@ export default function Home() {
                             <td
                               key={`${row}-${col}`}
                               className={`
-                                w-12 h-12 text-center text-sm font-medium border border-gray-300 dark:border-gray-600 cursor-pointer transition-all duration-200
+                                w-16 h-12 text-center text-sm font-medium border border-gray-300 dark:border-gray-600 cursor-pointer transition-all duration-200
                                 ${isHighlighted 
                                   ? "bg-blue-500 text-white font-bold shadow-md transform scale-105" 
                                   : row % 2 === 0 
