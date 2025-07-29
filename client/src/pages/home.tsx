@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 font-sans">
       {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-soft border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+      <header className="bg-white dark:bg-gray-800 shadow-soft border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -97,34 +97,33 @@ export default function Home() {
           </CardHeader>
           <CardContent className="p-6">
             {/* Multiplication Table Grid */}
-            <div className="overflow-x-auto">
-              <div className="inline-block min-w-full">
-                <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
-                  {/* Header Row */}
-                  <thead>
-                    <tr>
-                      <th className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600 sticky left-0 z-20">
-                        ×
+            <div className="overflow-auto max-h-[600px]">
+              <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
+                {/* Header Row */}
+                <thead className="sticky top-0 z-10">
+                  <tr>
+                    <th className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600">
+                      ×
+                    </th>
+                    {columnHeaders.map((col) => (
+                      <th
+                        key={col}
+                        className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600"
+                      >
+                        {col}
                       </th>
-                      {columnHeaders.map((col) => (
-                        <th
-                          key={col}
-                          className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600"
-                        >
-                          {col}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  
-                  {/* Table Body */}
-                  <tbody>
-                    {rowHeaders.map((row) => (
-                      <tr key={row} id={`row-${row}`}>
-                        {/* Row Header */}
-                        <th className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600 sticky left-0 z-10">
-                          {row}
-                        </th>
+                    ))}
+                  </tr>
+                </thead>
+                
+                {/* Table Body */}
+                <tbody>
+                  {rowHeaders.map((row) => (
+                    <tr key={row} id={`row-${row}`}>
+                      {/* Row Header */}
+                      <th className="w-16 h-12 bg-gray-800 dark:bg-gray-700 text-white font-bold text-sm border border-gray-300 dark:border-gray-600">
+                        {row}
+                      </th>
                         
                         {/* Data Cells */}
                         {columnHeaders.map((col) => {
@@ -153,7 +152,6 @@ export default function Home() {
                     ))}
                   </tbody>
                 </table>
-              </div>
             </div>
 
             {/* Legend */}
